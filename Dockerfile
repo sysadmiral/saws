@@ -1,11 +1,10 @@
-FROM ubuntu:latest
+# A container for SAWS
+#
+# See: https://github.com/donnemartin/saws
 
-RUN apt-get update && apt-get install -y \
-    groff \
-    python-pip \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+FROM sysadmiral/python3:latest
+MAINTAINER Donne Martin <donne.martin@gmail.com>
 
-RUN pip install saws
+RUN python3 -m pip install saws
 
 ENTRYPOINT ["saws"]
